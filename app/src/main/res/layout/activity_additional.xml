@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/bt1"
+        android:layout_width="379dp"
+        android:padding="10dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/bt10"
+        android:layout_marginStart="0dp"
+        android:background="@android:color/white"
+        android:text="Adverts"
+        android:textAlignment="viewStart"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="2dp" />
+
+    <Button
+        android:id="@+id/bt2"
+        android:padding="10dp"
+        android:layout_width="379dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/bt1"
+        android:background="@android:color/white"
+        android:text="Blog"
+        android:textAlignment="viewStart"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="2dp" />
+
+    <Button
+        android:id="@+id/logoutBtn"
+        android:padding="10dp"
+        android:layout_width="379dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/bt4"
+        android:background="@android:color/white"
+        android:text="Log out of all accounts"
+        android:textAlignment="viewStart"
+        android:textColor="@color/instagram_blue_old"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="2dp" />
+
+    <Button
+        android:id="@+id/bt4"
+        android:padding="10dp"
+        android:layout_width="379dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/bt5"
+        android:background="@android:color/white"
+        android:text="Add Account"
+        android:textAlignment="viewStart"
+        android:textColor="@color/instagram_blue_old"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="2dp" />
+
+    <Button
+        android:id="@+id/bt5"
+        android:padding="10dp"
+        android:layout_width="379dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/bt6"
+        android:background="@android:color/white"
+        android:text="Clear search history"
+        android:textAlignment="viewStart"
+        android:textColor="@color/instagram_blue_old"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="2dp" />
+
+    <Button
+        android:id="@+id/bt6"
+        android:padding="10dp"
+        android:layout_width="379dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/bt7"
+        android:background="@android:color/white"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="2dp" />
+
+    <Button
+        android:id="@+id/bt7"
+        android:padding="10dp"
+        android:layout_width="379dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/bt8"
+        android:background="@android:color/white"
+        android:text="Open Source Libraries"
+        android:textAlignment="viewStart"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="2dp" />
+
+    <Button
+        android:id="@+id/bt8"
+        android:padding="10dp"
+        android:layout_width="379dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/bt9"
+        android:background="@android:color/white"
+        android:text="Terms"
+        android:textAlignment="viewStart"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="2dp" />
+
+    <Button
+        android:id="@+id/bt9"
+        android:padding="10dp"
+        android:layout_width="379dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/bt2"
+        android:background="@android:color/white"
+        android:text="Privacy Policy"
+        android:textAlignment="viewStart"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="2dp" />
+
+    <Button
+        android:id="@+id/bt10"
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:background="@android:color/white"
+        android:text="Report a Problem"
+        android:textAlignment="viewStart"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="2dp" />
+
+</RelativeLayout>
