@@ -1,4 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
-
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_home"
+        android:enabled="true"
+        android:icon="@drawable/instagram_user_icon"
+        android:title="Home"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_camera"
+        android:enabled="true"
+        android:icon="@drawable/instagram_new_post_icon"
+        android:title="New Post"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_love"
+        android:enabled="true"
+        android:icon="@drawable/ufi_heart_icon"
+        android:title="Love"
+        app:showAsAction="always" />
 </menu>
