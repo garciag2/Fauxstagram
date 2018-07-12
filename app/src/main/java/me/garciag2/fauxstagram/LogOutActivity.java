@@ -8,13 +8,13 @@ import android.widget.Button;
 
 import com.parse.ParseUser;
 
-public class AdditionalActivity extends AppCompatActivity{
+public class LogOutActivity extends AppCompatActivity{
     Button logoutBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_additional);
+        setContentView(R.layout.activity_logout);
 
         logoutBtn = (Button) findViewById(R.id.logoutBtn);
         logoutBtn.setOnClickListener(new View.OnClickListener() {
@@ -22,7 +22,7 @@ public class AdditionalActivity extends AppCompatActivity{
             public void onClick(View view) {
                 ParseUser.logOut();
                 ParseUser currentUser = ParseUser.getCurrentUser(); // this will now be null
-                Intent intent = new Intent(AdditionalActivity.this, MainActivity.class);
+                Intent intent = new Intent(LogOutActivity.this, LoggingPageActivity.class);
                 startActivity(intent);
             }
         });

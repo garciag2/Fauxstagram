@@ -35,7 +35,7 @@ import java.util.List;
 
 import me.garciag2.fauxstagram.model.Post;
 
-public class HomeActivity extends AppCompatActivity {
+public class PostingActivity extends AppCompatActivity {
     private String imagePath;
     private Button createButton;
     private Button refreshButton;
@@ -49,7 +49,7 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.activity_posting);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -63,7 +63,8 @@ public class HomeActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.action_home:
-                        // do something here
+                        Intent i = new Intent(PostingActivity.this, TimelineActivity.class);
+                        startActivity(i);
                         return true;
                     case R.id.action_camera:
                         onLaunchCamera();
@@ -128,7 +129,7 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void done(ParseException e) {
                 if(e == null){
-                    Log.d("HomeActivity", "Success");
+                    Log.d("PostingActivity", "Success");
                 }else{
                     e.printStackTrace();
                 }
@@ -146,7 +147,7 @@ public class HomeActivity extends AppCompatActivity {
         // wrap File object into a content provider
         // required for API >= 24
         // See https://guides.codepath.com/android/Sharing-Content-with-Intents#sharing-files-with-api-24-or-higher
-        Uri fileProvider = FileProvider.getUriForFile(HomeActivity.this, "com.codepath.fileprovider", photoFile);
+        Uri fileProvider = FileProvider.getUriForFile(PostingActivity.this, "com.codepath.fileprovider", photoFile);
         intent.putExtra(MediaStore.EXTRA_OUTPUT, fileProvider);
 
         // If you call startActivityForResult() using an intent that no app can handle, your app will crash.
@@ -215,7 +216,6 @@ public class HomeActivity extends AppCompatActivity {
         }
     }
 
-
     public void loadTopPosts(){
         final Post.Query postQuery = new Post.Query();
         postQuery.getTop().withUser();
@@ -225,7 +225,7 @@ public class HomeActivity extends AppCompatActivity {
             public void done(List<Post> objects, ParseException e) {
                 if (e == null) {
                     for (int i = 0; i < objects.size(); i++) {
-                        Log.d("HomeActivity", "Post[" + i + "] = "
+                        Log.d("PostingActivity", "Post[" + i + "] = "
                                 + objects.get(i).getDescription()
                                 + "\nusername = " + objects.get(i).getUser().getUsername());
                     }
@@ -238,29 +238,10 @@ public class HomeActivity extends AppCompatActivity {
 
     public void onClick(MenuItem mi) {
         // handle click here
-        Intent intent = new Intent(this, AdditionalActivity.class);
+        Intent intent = new Intent(this, LogOutActivity.class);
         startActivityForResult(intent, 25);
     }
 
-    public static class BitmapScaler
-    {
-        // Scale and maintain aspect ratio given a desired width
-        // BitmapScaler.scaleToFitWidth(bitmap, 100);
-        public static Bitmap scaleToFitWidth(Bitmap b, int width)
-        {
-            float factor = width / (float) b.getWidth();
-            return Bitmap.createScaledBitmap(b, width, (int) (b.getHeight() * factor), true);
-        }
-
-        // Scale and maintain aspect ratio given a desired height
-        // BitmapScaler.scaleToFitHeight(bitmap, 100);
-        public Bitmap scaleToFitHeight(Bitmap b, int height)
-        {
-            float factor = height / (float) b.getHeight();
-            return Bitmap.createScaledBitmap(b, (int) (b.getWidth() * factor), height, true);
-        }
-
-    }
 
 }
 

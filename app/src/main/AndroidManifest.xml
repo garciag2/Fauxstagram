@@ -14,7 +14,7 @@
         android:roundIcon="@drawable/instagram_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".LoggingPageActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,16 +22,35 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".HomeActivity"
+            android:name=".PostingActivity"
             android:label="@string/title_activity_home"
             android:theme="@style/AppTheme.NoActionBar">
 
         </activity>
+
         <activity
-        android:name=".AdditionalActivity"
+            android:name=".SignUpActivity"
+            android:label="@string/title_activity_home"
+            android:theme="@style/AppTheme.NoActionBar">
+
+        </activity>
+
+        <activity
+        android:name=".LogOutActivity"
         android:label="title_activity_additional"
         android:theme="@style/AppTheme.NoActionBar">
         </activity>
+        <activity
+        android:name=".TimelineActivity"
+        android:label="title_timeline_activity"
+        android:theme="@style/AppTheme.NoActionBar">
+    </activity>
+        <activity
+            android:name=".MainActivity"
+            android:label="title_timeline_activity"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="com.codepath.fileprovider"
