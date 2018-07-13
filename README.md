@@ -47,7 +47,7 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 Here's a walkthrough of implemented user stories:
 
-![instagramgif2](instagramgif2.gif)
+![instagram2gif](instagram2gif.gif)
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
