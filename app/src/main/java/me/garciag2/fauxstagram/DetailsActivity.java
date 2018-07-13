@@ -37,6 +37,7 @@ public class DetailsActivity extends AppCompatActivity{
 
         tvUsername.setText(post.getUser().getUsername().toString());
         tvDescription.setText(post.getDescription().toString());
+        tvTimestamp.setText(PostAdapter.getRelativeTimeAgo(post.getCreatedAt()));
 
         Glide.with(context).load(post.getParseFile("Image").getUrl()).into(ivImage);
         Glide.with(context).load(post.getUser().getParseFile("profileImage").getUrl()).into(ivProfileImage);

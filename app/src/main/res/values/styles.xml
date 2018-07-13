@@ -3,8 +3,8 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/instagram_blue_old</item>
-        <item name="colorPrimaryDark">@color/instagram_blue_old</item>
+        <item name="colorPrimary">@color/instagram_maroon</item>
+        <item name="colorPrimaryDark">@color/instagram_maroon</item>
         <item name="colorAccent">@color/instagram_maroon</item>
     </style>
 

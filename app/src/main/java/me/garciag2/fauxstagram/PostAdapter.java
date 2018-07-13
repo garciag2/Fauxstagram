@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +12,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.CircleCrop;
+import com.bumptech.glide.request.RequestOptions;
 
+import java.util.Date;
 import java.util.List;
 
 import me.garciag2.fauxstagram.model.Post;
@@ -43,9 +47,10 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         Post post = mPosts.get(i);
         holder.tvUsername.setText(post.getUser().getUsername().toString());
         holder.tvDescription.setText(post.getDescription().toString());
+        holder.tvTimeStamp.setText(getRelativeTimeAgo(post.getCreatedAt()));
 
          Glide.with(context).load(post.getParseFile("Image").getUrl()).into(holder.ivImage);
-         Glide.with(context).load(post.getUser().getParseFile("profileImage").getUrl()).into(holder.ivProfileImage);
+         Glide.with(context).load(post.getUser().getParseFile("profileImage").getUrl()).apply(RequestOptions.bitmapTransform(new CircleCrop())).into(holder.ivProfileImage);
 
 
     }
@@ -72,6 +77,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         public ImageView ivImage;
         public TextView tvUsername;
         public TextView tvDescription;
+        public TextView tvTimeStamp;
 
         public ViewHolder(@NonNull final View itemView) {
             super(itemView);
@@ -79,6 +85,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
             ivImage = (ImageView) itemView.findViewById(R.id.ivImage);
             tvUsername = (TextView) itemView.findViewById(R.id.tvUsername);
             tvDescription = (TextView) itemView.findViewById(R.id.tvDescription);
+            tvTimeStamp = (TextView) itemView.findViewById(R.id.tvTimestamp);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -93,5 +100,13 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
 
 
         }
+    }
+
+    public static String getRelativeTimeAgo(Date date) {
+        String relativeDate;
+        long dateMillis = date.getTime();
+        relativeDate = DateUtils.getRelativeTimeSpanString(dateMillis,
+                System.currentTimeMillis(), DateUtils.SECOND_IN_MILLIS).toString();
+        return relativeDate;
     }
 }

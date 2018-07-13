@@ -44,6 +44,10 @@ public class MainActivity extends AppCompatActivity{
 
         final FragmentManager fragmentManager = getSupportFragmentManager();
 
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setLogo(R.drawable.instagram_word_white);
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
+
         // handle navigation selection
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
 
@@ -146,5 +150,6 @@ public class MainActivity extends AppCompatActivity{
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
+
 
 }
