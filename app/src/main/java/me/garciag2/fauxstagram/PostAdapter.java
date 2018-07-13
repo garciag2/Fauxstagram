@@ -1,6 +1,7 @@
 package me.garciag2.fauxstagram;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -40,7 +41,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull PostAdapter.ViewHolder holder, int i) {
         Post post = mPosts.get(i);
-        holder.tvUsername.setText(post.getUser().toString());
+        holder.tvUsername.setText(post.getUser().getUsername().toString());
         holder.tvDescription.setText(post.getDescription().toString());
 
          Glide.with(context).load(post.getParseFile("Image").getUrl()).into(holder.ivImage);
@@ -72,12 +73,23 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         public TextView tvUsername;
         public TextView tvDescription;
 
-        public ViewHolder(@NonNull View itemView) {
+        public ViewHolder(@NonNull final View itemView) {
             super(itemView);
             ivProfileImage = (ImageView) itemView.findViewById(R.id.ivProfileImage);
             ivImage = (ImageView) itemView.findViewById(R.id.ivImage);
             tvUsername = (TextView) itemView.findViewById(R.id.tvUsername);
             tvDescription = (TextView) itemView.findViewById(R.id.tvDescription);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int position = getAdapterPosition();
+                    Post post = mPosts.get(position);
+                    Intent i = new Intent(context, DetailsActivity.class);
+                    i.putExtra("post", post);
+                    context.startActivity(i);
+                }
+            });
 
 
         }

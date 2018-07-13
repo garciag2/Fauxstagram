@@ -44,7 +44,7 @@ public class SignUpActivity extends AppCompatActivity {
 
 
         if(ParseUser.getCurrentUser() != null) {
-            Intent intent = new Intent(SignUpActivity.this, PostingActivity.class);
+            Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
             startActivity(intent);
         }
     }
@@ -64,7 +64,7 @@ public class SignUpActivity extends AppCompatActivity {
                     Log.d("SignupActivity", "Signup successful");
                     Toast.makeText(SignUpActivity.this, "Signup successful!!!", Toast.LENGTH_SHORT).show();
                     //TODO change intent to go to TimelineActivity
-                    final Intent intent = new Intent(SignUpActivity.this, PostingActivity.class);
+                    final Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
                     startActivity(intent);
                     finish();
                 } else {

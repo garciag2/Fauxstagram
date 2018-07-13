@@ -2,6 +2,8 @@ package me.garciag2.fauxstagram;
 
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -24,46 +26,35 @@ public class CameraFragment extends Fragment {
     // The onCreateView method is called when Fragment should create its View object hierarchy,
     // either dynamically or via XML layout inflation.
 
-
-    public String imagePath;
     public Button createButton;
     public EditText descriptionInput;
     public ImageView ivPreview;
-    public File photoFile;
+    File photoFile;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
         // Defines the xml file for the fragment
-        View v = inflater.inflate(R.layout.fragment_camera, parent, false);
+        return inflater.inflate(R.layout.fragment_camera, parent, false);
+
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View v, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(v,savedInstanceState);
+
         ivPreview = v.findViewById(R.id.ivPreview);
         createButton = v.findViewById(R.id.createBtn);
         descriptionInput = v.findViewById(R.id.etDescription);
-
-        imagePath = photoFile.getAbsolutePath();
 
         createButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 final String description = descriptionInput.getText().toString();
                 final ParseUser user = ParseUser.getCurrentUser();
-                final File file = new File(imagePath);
-
-                final ParseFile parseFile = new ParseFile(file);
-                parseFile.saveInBackground(new SaveCallback() {
-                    @Override
-                    public void done(ParseException e) {
-                        if (e == null) {
-                            createPost(description, parseFile, user);
-                        } else {
-                            e.printStackTrace();
-                        }
-
-                    }
-                });
+                final ParseFile parseFile = new ParseFile(photoFile);
+                createPost(description, parseFile, user);
             }
-        });
-        return v;
-
+    });
     }
 
     private void createPost(String description, ParseFile imageFile, ParseUser user){
@@ -72,11 +63,14 @@ public class CameraFragment extends Fragment {
         newPost.setImage(imageFile);
         newPost.setUser(user);
 
+        descriptionInput.clearFocus();
+
         newPost.saveInBackground(new SaveCallback() {
             @Override
             public void done(ParseException e) {
                 if(e == null){
                     Log.d("PostingActivity", "Success");
+                    //TODO ADD LISTENER SO GOES TO TIMELINE
                 }else{
                     e.printStackTrace();
                 }

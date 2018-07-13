@@ -4,58 +4,53 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/instagram_login_page"
     tools:context=".SignUpActivity">
 
     <Button
         android:id="@+id/loginBtn"
         android:layout_width="310dp"
-        android:layout_height="wrap_content"
+        android:layout_height="44dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="184dp"
-        android:background="?attr/colorAccent"
-        android:text="LOG IN" />
+        android:layout_marginBottom="265dp"
+        android:background="@android:color/transparent"
+        android:text="Login"
+        android:textColor="@android:color/white" />
 
     <Button
         android:id="@+id/signupBtn"
         android:layout_width="310dp"
-        android:layout_height="wrap_content"
+        android:layout_height="42dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="116dp"
-        android:background="@android:color/holo_purple"
-        android:text="SIGN UP" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="256dp"
-        android:layout_height="79dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="42dp"
-        app:srcCompat="@drawable/instagram_word_black" />
+        android:background="@android:color/transparent"
+        android:textColor="@android:color/white" />
 
     <EditText
         android:id="@+id/etUsername"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_above="@+id/etPassword"
-        android:layout_alignParentStart="true"
-        android:hint="Username"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1">
+        android:layout_width="330dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="233dp"
+        android:textAppearance="@android:style/TextAppearance.Large"
+        android:textColor="@android:color/white">
 
     </EditText>
 
     <EditText
         android:id="@+id/etPassword"
-        android:layout_width="match_parent"
-        android:layout_height="90dp"
-        android:layout_alignParentStart="true"
-        android:layout_centerVertical="true"
+        android:layout_width="330dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_below="@id/etUsername"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="290dp"
         android:ems="10"
         android:inputType="textPassword"
-        android:hint="Password"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1">
+        android:textAppearance="@android:style/TextAppearance.Large"
+        android:textColor="@android:color/white">
 
     </EditText>
 

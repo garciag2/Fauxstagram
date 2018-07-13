@@ -14,7 +14,9 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -30,13 +32,15 @@ public class MainActivity extends AppCompatActivity{
     public final String APP_TAG = "MyCustomApp";
     public final static int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 1034;
     public String photoFileName = "photo.jpg";
+    public String imagePath;
     File photoFile;
-    private String imagePath;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         final FragmentManager fragmentManager = getSupportFragmentManager();
 
@@ -65,6 +69,8 @@ public class MainActivity extends AppCompatActivity{
                         return false;
                     }
                 });
+        fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.flContainer, fragment1).commit();
 
     }
 
@@ -76,13 +82,9 @@ public class MainActivity extends AppCompatActivity{
         photoFile = getPhotoFileUri(photoFileName);
 
         // wrap File object into a content provider
-        // required for API >= 24
-        // See https://guides.codepath.com/android/Sharing-Content-with-Intents#sharing-files-with-api-24-or-higher
         Uri fileProvider = FileProvider.getUriForFile(MainActivity.this, "com.codepath.fileprovider", photoFile);
         intent.putExtra(MediaStore.EXTRA_OUTPUT, fileProvider);
 
-        // If you call startActivityForResult() using an intent that no app can handle, your app will crash.
-        // So as long as the result is not null, it's safe to use the intent.
         if (intent.resolveActivity(getPackageManager()) != null) {
             // Start the image capture intent to take photo
             startActivityForResult(intent, CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE);
@@ -113,6 +115,8 @@ public class MainActivity extends AppCompatActivity{
             if (resultCode == RESULT_OK) {
                 // by this point we have the camera photo on disk
                 imagePath = photoFile.getAbsolutePath();
+
+
                 Bitmap takenImage = BitmapFactory.decodeFile(photoFile.getAbsolutePath());
                 // RESIZE BITMAP, see section below
                 File takenPhotoUri = getPhotoFileUri(photoFileName);
@@ -122,12 +126,25 @@ public class MainActivity extends AppCompatActivity{
                 Bitmap resizedBitmap = BitmapScaler.scaleToFitWidth(rawTakenImage, 100);
 
                 ((CameraFragment) fragment2).ivPreview.setImageBitmap(resizedBitmap);
+                ((CameraFragment) fragment2).photoFile = takenPhotoUri;
 
 
             } else { // Result was a failure
                 Toast.makeText(this, "Picture wasn't taken!", Toast.LENGTH_SHORT).show();
             }
         }
+    }
+
+    public void onClick(MenuItem mi) {
+        // handle click here
+        Intent intent = new Intent(this, LogOutActivity.class);
+        startActivityForResult(intent, 25);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
     }
 
 }

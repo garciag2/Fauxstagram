@@ -33,6 +33,7 @@ public class LoggingPageActivity extends AppCompatActivity {
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                loginBtn.setBackgroundColor(getResources().getColor(R.color.instagram_maroon));
                 final String username = usernameInput.getText().toString();
                 final String password = passwordInput.getText().toString();
                 login(username, password);
